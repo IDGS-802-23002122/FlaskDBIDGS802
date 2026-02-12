@@ -1,0 +1,22 @@
+{# Macro para campos genéricos #}
+{% macro datos(name, placeholder, type="text") %}
+<div class="mb-3">
+    <label for="{{ name }}" class="form-label">{{ name }}:</label>
+    <input type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ placeholder }}" class="form-control">
+</div>
+{% endmacro %}
+
+{# Macro para campos de Flask-WTF #}
+{% macro campoNuevo(field) %}
+<div class="mb-3">
+    <td>{{ field.label }}</td>
+    <dd>{{ field(**kwargs) | safe }}</dd>
+    {% if field.errors %}
+        <ul>
+        {% for error in field.errors %}
+            <li style="color: red">{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endmacro %}
