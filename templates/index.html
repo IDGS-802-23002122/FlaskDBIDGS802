@@ -1,27 +1,50 @@
-{% extends "layout.html" %} {% block container %} {% import "_macros.html" as macros %}
+{% extends "layout.html" %} 
+{% block container %} 
+{% import "_macros.html" as macros %}
 
-<form class="max-w-sm mx-auto">
-    <div class="mb-5">
-        <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Your email</label>
-        <input type="email" id="email"
-            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-            placeholder="name@flowbite.com" required />
+<div class="container mx-auto mt-8 px-4">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg border border-gray-200">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-100 border-b border-gray-300">
+                <tr>
+                    <th scope="col" class="px-6 py-4">Nombre</th>
+                    <th scope="col" class="px-6 py-4">Apellido Paterno</th>
+                    <th scope="col" class="px-6 py-4">Email</th>
+                    <th scope="col" class="px-6 py-4 text-center">Acciones</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for alum in alumno %}
+                <tr class="bg-white border-b hover:bg-blue-50 transition-colors">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{ alum.nombre }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ alum.apaterno }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ alum.email }}
+                    </td>
+                    <td class="px-6 py-4 text-center space-x-2">
+                        <a href="#" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-600 bg-blue-100 rounded-lg hover:bg-blue-200">
+                            Editar
+                        </a>
+                        
+                        <a href="detalles?id={{ alum.id }}" 
+                         class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200">
+                            Detalles
+                        </a>
+
+                        <a href="#" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    <div class="mb-5">
-        <label for="password" class="block mb-2.5 text-sm font-medium text-heading">Your password</label>
-        <input type="password" id="password"
-            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-            placeholder="••••••••" required />
-    </div>
-    <label for="remember" class="flex items-center mb-5">
-        <input id="remember" type="checkbox" value=""
-            class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
-            required />
-        <p class="ms-2 text-sm font-medium text-heading select-none">I agree with the <a href="#"
-                class="text-fg-brand hover:underline">terms and conditions</a>.</p>
-    </label>
-    <button type="submit"
-        class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
-</form>
+</div>
 
 {% endblock %}

@@ -1,24 +1,24 @@
-{% extends "layout.html" %} {% block container %} {% import "_macros.html" as macros %}
+{% extends "layout.html" %} 
+{% block container %} 
+{% import "_macros.html" as macros %}
 
+<div class="container mx-auto mt-10">
+    <form action="" method="POST" novalidate class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md border border-gray-100">
+        {{ form.csrf_token }}
+        
+        <h2 class="text-xl font-bold text-heading mb-6 border-b pb-2">Registro de Alumno</h2>
 
-<form class="max-w-sm mx-auto space-y-4">
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Small Input</label>
-        <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs placeholder:text-body" placeholder="" required />
-    </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Base Input</label>
-        <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
-    </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Large Input</label>
-        <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body" placeholder="" required />
-    </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Extra Large Input</label>
-        <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-4 py-3.5 shadow-xs placeholder:text-body" placeholder="" required />
-    </div>
- <button type="submit"
-        class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
-</form>
+        {{ macros.campoNuevo(form.nombre) }}
+        {{ macros.campoNuevo(form.apaterno) }}
+        {{ macros.campoNuevo(form.email) }}
+
+        <div class="mt-6">
+            <button type="submit"
+                class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 shadow-sm font-medium rounded-lg text-sm px-5 py-3 transition-all">
+                Guardar Alumno
+            </button>
+        </div>
+    </form>
+</div>
+
 {% endblock %}
