@@ -1,50 +1,69 @@
-{% extends "layout.html" %} 
-{% block container %} 
-{% import "_macros.html" as macros %}
 
-<div class="container mx-auto mt-8 px-4">
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg border border-gray-200">
-        <table class="w-full text-sm text-left text-gray-500">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-100 border-b border-gray-300">
-                <tr>
-                    <th scope="col" class="px-6 py-4">Nombre</th>
-                    <th scope="col" class="px-6 py-4">Apellido Paterno</th>
-                    <th scope="col" class="px-6 py-4">Email</th>
-                    <th scope="col" class="px-6 py-4 text-center">Acciones</th>
-                </tr>
-            </thead>
+
+{%extends "layout.html"%}
+{%block container%}
+<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default p-4">
+
+  <a href="alumnos" class="bg-blue-700 inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 
+            hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 
+            font-medium rounded-base text-sm px-4 py-2.5 text-white  w-full">
+    NUEVO ALUMNO
+  </a>
+<table class="w-full text-sm text-left rtl:text-right text-body">
+        <thead class="bg-neutral-secondary-soft border-b border-default">
+            <tr>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Nombre
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Apellidos
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Telefono
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+          {%for alumn in alumno%}
+
+            <tr class="odd:bg-neutral-primary even:bg-neutral-secondary-soft border-b border-default">
+                <th class="px-6 py-4">
+                  {{alumn.nombre}}
+                </th>
+                <td class="px-6 py-4">
+                    {{alumn.apellidos}}
+                </td>
+                <td class="px-6 py-4">
+                    {{alumn.email}}
+                </td>
+                <td class="px-6 py-4">
+                    {{alumn.telefono}}
+                </td> 
+                <td class="px-6 py-4">
+                    <a href="modificar?id={{ alumn.id }}" class="font-medium text-fg-brand hover:underline">Editar</a>
+                </td>
+                <td class="px-6 py-4">
+                    <a href="detalles?id={{ alumn.id }}" class="font-medium text-fg-brand hover:underline">Detalles</a>
+                </td>
+                <td class="px-6 py-4">
+                    <a href="eliminar?id={{ alumn.id }}" class="font-medium text-fg-brand hover:underline">Eliminar</a>
+                </td>
+            </tr>
             
-            <tbody>
-                {% for alum in alumno %}
-                <tr class="bg-white border-b hover:bg-blue-50 transition-colors">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{ alum.nombre }}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{ alum.apaterno }}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ alum.email }}
-                    </td>
-                    <td class="px-6 py-4 text-center space-x-2">
-                        <a href="#" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-600 bg-blue-100 rounded-lg hover:bg-blue-200">
-                            Editar
-                        </a>
-                        
-                        <a href="detalles?id={{ alum.id }}" 
-                         class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200">
-                            Detalles
-                        </a>
-
-                        <a href="#" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600">
-                            Eliminar
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+            {%endfor%}
+        </tbody>
+    </table>
 </div>
 
 {% endblock %}
+    
+<script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+</body>
+
+</html>

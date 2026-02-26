@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block container %}
+{% import "_macros.html" as macros %}
+
+<div class="max-w-sm mx-auto mt-10">
+    <div class="bg-white block p-6 border border-gray-200 rounded-2xl shadow-xl transition-all hover:shadow-2xl">
+        <div class="flex justify-center mb-6">
+            <img class="w-32 h-32 rounded-full border-4 border-blue-50 object-cover" 
+                 src="/static/img/descarga.jpg" 
+                 alt="Foto de perfil" />
+        </div>
+
+        <div class="space-y-4">
+            <div>
+                <p class="text-xs font-bold text-blue-600 uppercase tracking-wider">Nombre Completo</p>
+                <h5 class="text-xl font-semibold text-gray-900">{{ nombre }} {{ apellidos }}</h5>
+            </div>
+
+            <div>
+                <p class="text-xs font-bold text-blue-600 uppercase tracking-wider">Correo Electrónico</p>
+                <h5 class="text-lg font-medium text-gray-700">{{ email }}</h5>
+            </div>
+
+            {% if telefono %}
+            <div>
+                <p class="text-xs font-bold text-blue-600 uppercase tracking-wider">Teléfono</p>
+                <h5 class="text-lg font-medium text-gray-700">{{ telefono }}</h5>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3">
+            <a href="/modificar?id={{ id }}" 
+               class="w-full text-center px-4 py-3 text-sm font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+                Editar Información
+            </a>
+            
+            <a href="{{ url_for('index') }}" 
+               class="w-full inline-flex items-center justify-center text-gray-600 bg-gray-100 hover:bg-gray-200 font-bold rounded-xl text-sm px-4 py-3 transition-all">
+                <svg class="w-4 h-4 me-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+                </svg>
+                Regresar a la Lista
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

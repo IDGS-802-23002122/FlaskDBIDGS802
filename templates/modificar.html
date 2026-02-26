@@ -1,2 +1,23 @@
-{% extends "layout.html" %} {% block container %} {% import "_macros.html" as macros %}
+{% extends "layout.html" %}
+{% block container %}
+{% import "_macros.html" as macros %}
 
+<form method="POST" action="" class="max-w-sm mx-auto space-y-4">
+    {{ form.csrf_token }}
+
+    <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
+        <a href="#">
+            <img class="rounded-base" src="/static/img/descarga.jpg" alt="" />
+        </a>
+        <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-heading">NOMBRE: {{nombre}}</h5>
+        <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-heading">APELLIDOS: {{apellidos}}</h5>
+        <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-heading">EMAIL: {{email}}</h5>
+        
+        <div class="flex gap-2 mt-4">
+            <a href="{{ url_for('index') }}" class="inline-flex items-center text-body bg-neutral-secondary-medium border border-default-medium hover:bg-neutral-tertiary-medium rounded-base text-sm px-4 py-2.5">
+                Regresar
+            </a>
+        </div>
+    </div>
+</form>
+{% endblock %}
